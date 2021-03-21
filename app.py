@@ -1,5 +1,5 @@
 # app.py
-from flask import Flask           # import flask
+from flask import Flask,request,render_template           # import flask, request and render_template
 app = Flask(__name__)             # create an app instance
 
 @app.route("/", methods =["GET", "POST"])                   # at the end point /
@@ -9,7 +9,7 @@ def test():                    # call method test
        first_name = request.form.get("fname") 
        # getting input with name = lname in HTML form  
        last_name = request.form.get("lname")  
-       return "Your name is "+first_name + last_name 
+       return "Your name is "+first_name + last_name
     return render_template("form.html") 
 if __name__ == "__main__":        # on running python app.py
     app.run(debug=True)                     # run the flask app
