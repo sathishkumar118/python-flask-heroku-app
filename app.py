@@ -10,6 +10,6 @@ def test():                    # call method test
        # getting input with name = lname in HTML form  
        last_name = request.form.get("lname")
        return "Your name is "+first_name + last_name
-    return render_template("test.html")
+    return render_template("form.html")
 if __name__ == "__main__":        # on running python app.py
     app.run(debug=True)                     # run the flask app
