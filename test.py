@@ -1,6 +1,6 @@
 # app.py
 from flask import Flask,request,render_template           # import flask, request and render_template
-app = Flask(__name__)             # create an app instance
+app = Flask(__name__, template_folder="templates")           # create an app instance
 
 @app.route("/", methods =["GET", "POST"])                   # at the end point /
 def test():                    # call method test
