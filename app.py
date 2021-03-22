@@ -1,6 +1,7 @@
 # app.py
 from flask import Flask,request,render_template           # import flask, request and render_template
-
+import os
+import psycopg2
 
 app = Flask(__name__, template_folder="templates")           # create an app instance
 
