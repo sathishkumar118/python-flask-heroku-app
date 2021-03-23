@@ -9,7 +9,7 @@ app = Flask(__name__, template_folder="templates")           # create an app ins
     
 @app.route("/", methods =["GET", "POST"])                   # at the end point /
 def test():                    # call method test
-    DATABASE_URL = os.environ['DATABASE_URL']
+    #DATABASE_URL = os.environ['DATABASE_URL']
     #conn = psycopg2.connect(DATABASE_URL, sslmode='require')
     if request.method == "POST": 
        # getting input url
