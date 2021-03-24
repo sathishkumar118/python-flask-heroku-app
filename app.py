@@ -14,7 +14,7 @@ def test():                    # call method test
     if request.method == "POST": 
        # getting input url
        input_url = request.form.get("url")
-       return DATABASE_URL
+       return "<BODY>"+input_url.upper()+"</BODY>"
     return render_template("url.html")
 if __name__ == "__main__":        # on running python app.py
     app.run(debug=True)                     # run the flask app
