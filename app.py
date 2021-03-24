@@ -1,20 +1,29 @@
-# app.py
-from flask import Flask,request,render_template           # import flask, request and render_template
-import os
-import psycopg2
+from flask import Flask
+from flask_sqlalchemy import SQLAlchemy
 
-app = Flask(__name__, template_folder="templates")           # create an app instance
+app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'
 
+db = SQLAlchemy(app)
 
-    
-@app.route("/", methods =["GET", "POST"])                   # at the end point /
-def test():                    # call method test
-    #DATABASE_URL = os.environ['DATABASE_URL']
-    #conn = psycopg2.connect(DATABASE_URL, sslmode='require')
-    if request.method == "POST": 
-       # getting input url
-       input_url = request.form.get("url")
-       return "<BODY>"+input_url.upper()+"</BODY>"
-    return render_template("url.html")
-if __name__ == "__main__":        # on running python app.py
-    app.run(debug=True)                     # run the flask app
+from models import User
+
+@app.route('/add/')
+def webhook():
+    name = "ram"
+    email = "ram@ram.com"
+    u = User(id = id, nickname = name, email = email)
+    print("user created", u)
+    db.session.add(u)
+    db.session.commit()
+    return "user created"
+
+@app.route('/delete/')
+def delete():
+    u = User.query.get(i)
+    db.session.delete(u)
+    db.session.commit()
+    return "user deleted"
+
+if __name__ == '__main__':
+    app.run()
